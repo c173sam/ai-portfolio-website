@@ -15,10 +15,10 @@ export function ModuleSection({ id, eyebrow, title, description, children, dense
     <motion.section
       className={`module-section${dense ? " dense" : ""}`}
       id={id}
-      initial={{ opacity: 0.86, y: 20, filter: "blur(6px)" }}
+      initial={{ opacity: 0, y: 32, filter: "blur(8px)" }}
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once: true, margin: "-18% 0px" }}
-      transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
     >
       <div className="module-heading">
         <span>{eyebrow}</span>

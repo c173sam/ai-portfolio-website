@@ -63,21 +63,93 @@ p {
   position: relative;
   min-height: 100vh;
   overflow-x: clip;
+  background: oklch(var(--bg));
+}
+
+.ambient-stage,
+.ambient-orbit,
+.ambient-grid,
+.ambient-noise,
+.ambient-scan,
+.cursor-spotlight {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ambient-stage {
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ambient-orbit {
   background:
-    radial-gradient(circle at 50% 0%, oklch(var(--accent) / 0.055), transparent 34rem),
-    oklch(var(--bg));
+    radial-gradient(circle at 42% 16%, oklch(var(--accent) / 0.07), transparent 34rem),
+    radial-gradient(circle at 78% 46%, oklch(0.8 0.02 220 / 0.035), transparent 28rem);
+  animation: ambient-drift 36s cubic-bezier(0.16, 1, 0.3, 1) infinite alternate;
+  transform: translate3d(0, 0, 0);
 }
 
 .ambient-grid {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
+  opacity: 1;
   background:
     linear-gradient(oklch(1 0 0 / 0.03) 1px, transparent 1px),
     linear-gradient(90deg, oklch(1 0 0 / 0.03) 1px, transparent 1px);
   background-size: 80px 80px;
   mask-image: linear-gradient(to bottom, black 0%, black 38%, transparent 76%);
+  animation: grid-drift 42s linear infinite;
+}
+
+.ambient-noise {
+  opacity: 0.035;
+  background-image:
+    radial-gradient(circle at 12% 18%, white 0 0.5px, transparent 0.8px),
+    radial-gradient(circle at 72% 62%, white 0 0.45px, transparent 0.75px);
+  background-size: 72px 72px, 96px 96px;
+  mix-blend-mode: screen;
+}
+
+.ambient-scan {
+  opacity: 0.08;
+  background: linear-gradient(to bottom, transparent 0%, transparent 48%, oklch(var(--accent) / 0.16) 50%, transparent 52%, transparent 100%);
+  background-size: 100% 220%;
+  animation: scan-line 28s linear infinite;
+}
+
+.cursor-spotlight {
+  opacity: 0.58;
+  mix-blend-mode: screen;
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes ambient-drift {
+  from {
+    transform: translate3d(-2%, -1%, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(2%, 1.5%, 0) scale(1.04);
+  }
+}
+
+@keyframes grid-drift {
+  from {
+    background-position: 0 0, 0 0;
+  }
+
+  to {
+    background-position: 80px 40px, 40px 80px;
+  }
+}
+
+@keyframes scan-line {
+  from {
+    background-position: 0 -120%;
+  }
+
+  to {
+    background-position: 0 160%;
+  }
 }
 
 .top-navigation {
@@ -114,9 +186,23 @@ p {
 }
 
 .top-navigation nav a {
+  position: relative;
   color: oklch(var(--muted));
   font-size: 0.94rem;
   transition: color 180ms ease;
+}
+
+.top-navigation nav a::after {
+  position: absolute;
+  right: 0;
+  bottom: -6px;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: oklch(var(--accent) / 0.72);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .top-navigation nav a small {
@@ -128,6 +214,12 @@ p {
   color: oklch(var(--ink));
 }
 
+.top-navigation nav a:hover::after,
+.top-navigation nav a.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
 .top-actions {
   display: flex;
   gap: 8px;
@@ -137,6 +229,8 @@ p {
 .intro-actions a,
 .download-resume,
 .closing-link {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -151,6 +245,30 @@ p {
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
 }
 
+.top-actions a::before,
+.intro-actions a::before,
+.download-resume::before,
+.closing-link::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(90deg, transparent, oklch(var(--accent) / 0.1), transparent);
+  opacity: 0;
+  transform: translateX(-40%);
+  transition: opacity 220ms ease, transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.top-actions a > span,
+.intro-actions a > span,
+.download-resume > span,
+.closing-link > span {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .top-actions a:hover,
 .intro-actions a:hover,
 .download-resume:hover,
@@ -158,6 +276,14 @@ p {
   transform: translateY(-1px);
   border-color: oklch(var(--accent) / 0.6);
   background: oklch(var(--surface-2) / 0.76);
+}
+
+.top-actions a:hover::before,
+.intro-actions a:hover::before,
+.download-resume:hover::before,
+.closing-link:hover::before {
+  opacity: 1;
+  transform: translateX(40%);
 }
 
 .experience-canvas {
@@ -281,11 +407,53 @@ p {
 }
 
 .case-study {
+  position: relative;
   display: grid;
   grid-template-columns: 160px minmax(0, 1fr);
   gap: clamp(28px, 6vw, 96px);
   padding: clamp(28px, 5vw, 56px) 0;
   border-top: 1px solid oklch(var(--line) / 0.44);
+  isolation: isolate;
+  transition: border-color 220ms ease;
+}
+
+.case-study::before,
+.case-study::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  opacity: 0;
+  transition: opacity 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.case-study::before {
+  background: var(--case-light);
+}
+
+.case-study::after {
+  background: linear-gradient(90deg, oklch(var(--accent) / 0.045), transparent 48%);
+}
+
+.case-study:hover {
+  border-color: oklch(var(--accent) / 0.38);
+}
+
+.case-study:hover::before {
+  opacity: 1;
+}
+
+.case-study:hover::after {
+  opacity: 1;
+}
+
+.case-study:hover .case-index {
+  transform: translateX(4px);
+}
+
+.case-study:hover .case-grid {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .case-index small {
@@ -293,6 +461,10 @@ p {
   margin-top: 12px;
   color: oklch(var(--body));
   font-size: 0.95rem;
+}
+
+.case-index {
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .case-body h3 {
@@ -308,6 +480,9 @@ p {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(20px, 4vw, 42px);
   margin-top: clamp(28px, 5vw, 54px);
+  opacity: 0.88;
+  transform: translateY(2px);
+  transition: opacity 260ms ease, transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .case-block {
@@ -408,15 +583,62 @@ p {
 }
 
 .workflow-rail {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   border-top: 1px solid oklch(var(--line) / 0.4);
 }
 
+.workflow-rail::before {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, oklch(var(--accent) / 0.42), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.workflow-console:hover .workflow-rail::before {
+  transform: scaleX(1);
+}
+
 .workflow-step {
+  position: relative;
   min-height: 230px;
   border-right: 1px solid oklch(var(--line) / 0.32);
   padding: 20px 16px;
+  transition: background 220ms ease, border-color 220ms ease;
+}
+
+.workflow-step::before {
+  position: absolute;
+  top: -1px;
+  right: 0;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: oklch(var(--accent) / 0.58);
+  opacity: 0;
+  transform: scaleX(0.3);
+  transition: opacity 220ms ease, transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.workflow-step:hover {
+  border-color: oklch(var(--accent) / 0.36);
+  background: oklch(var(--accent) / 0.035);
+}
+
+.workflow-step:hover::before {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.workflow-step:hover strong {
+  color: oklch(var(--ink));
 }
 
 .workflow-step > span,
@@ -506,9 +728,15 @@ p {
 
 .contact-matrix a,
 .contact-matrix div {
+  position: relative;
   min-height: 188px;
   background: oklch(var(--bg));
   padding: 20px;
+  transition: background 180ms ease;
+}
+
+.contact-matrix a:hover {
+  background: oklch(var(--accent) / 0.04);
 }
 
 .contact-matrix svg {
@@ -564,6 +792,16 @@ p {
 }
 
 @media (max-width: 720px) {
+  .cursor-spotlight,
+  .ambient-scan {
+    display: none;
+  }
+
+  .ambient-orbit {
+    animation-duration: 54s;
+    opacity: 0.72;
+  }
+
   .top-navigation {
     width: min(100% - 28px, 1200px);
     gap: 12px;
@@ -636,5 +874,10 @@ p {
     transition-duration: 0.001ms !important;
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .cursor-spotlight,
+  .ambient-scan {
+    display: none;
   }
 }

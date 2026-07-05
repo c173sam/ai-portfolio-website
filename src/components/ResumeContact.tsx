@@ -1,8 +1,17 @@
 import { ArrowUpRight, FileDown, Github, Mail, MapPin, Phone } from "lucide-react";
+import { useState } from "react";
 import { profile, resumeFacts } from "../data/profile";
 import { ModuleSection } from "./ModuleSection";
 
 export function ResumeContact() {
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = async () => {
+    await navigator.clipboard.writeText(profile.email);
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1400);
+  };
+
   return (
     <>
       <ModuleSection
@@ -31,9 +40,15 @@ export function ResumeContact() {
         description="Minimal next-step information for technical support, project coordination, digital operations, and solution support roles."
       >
         <div className="contact-matrix">
-          <a href={`mailto:${profile.email}`}>
+          <a
+            href={`mailto:${profile.email}`}
+            onClick={(event) => {
+              event.preventDefault();
+              void copyEmail();
+            }}
+          >
             <Mail size={18} />
-            <span>Email</span>
+            <span>{copied ? "Copied" : "Email"}</span>
             <strong>{profile.email}</strong>
           </a>
           <a href={`tel:${profile.phone}`}>

@@ -23,10 +23,10 @@ export function AIWorkflow() {
             <motion.div
               className="workflow-step"
               key={step.label}
-              initial={{ opacity: 0.72 }}
-              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.04 }}
+              transition={{ duration: 0.62, delay: index * 0.055, ease: [0.16, 1, 0.3, 1] }}
             >
               <span>{String(index + 1).padStart(2, "0")}</span>
               <div>
