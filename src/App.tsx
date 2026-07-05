@@ -1,7 +1,6 @@
 import { AIWorkflow } from "./components/AIWorkflow";
 import { Capabilities } from "./components/Capabilities";
 import { CaseStudies } from "./components/CaseStudies";
-import { DesignDecisions } from "./components/DesignDecisions";
 import { ExperienceShell } from "./components/ExperienceShell";
 import { Introduction } from "./components/Introduction";
 import { Process } from "./components/Process";
@@ -11,11 +10,10 @@ export default function App() {
   return (
     <ExperienceShell>
       <Introduction />
-      <Capabilities />
       <CaseStudies />
-      <Process />
+      <Capabilities />
       <AIWorkflow />
-      <DesignDecisions />
+      <Process />
       <ResumeContact />
     </ExperienceShell>
   );

@@ -5,10 +5,10 @@ import { ModuleSection } from "./ModuleSection";
 export function CaseStudies() {
   return (
     <ModuleSection
-      id="case-studies"
-      eyebrow="Case studies"
-      title="How the work is reasoned through."
-      description="Each case is structured like an internal product review: context, problem, constraints, solution, engineering detail, AI workflow, result, and reflection."
+      id="work"
+      eyebrow="Selected work"
+      title="Three cases. One operating pattern."
+      description="Each case shows how fragmented information becomes a clearer system: context, problem, action, result, and the tools used to get there."
     >
       <div className="case-stack">
         {caseStudies.map((study, index) => (
@@ -29,26 +29,16 @@ export function CaseStudies() {
               <div className="case-grid">
                 <CaseBlock label="Context" value={study.context} />
                 <CaseBlock label="Problem" value={study.problem} />
-                <div className="case-block">
-                  <span>Constraints</span>
-                  <ul>
-                    {study.constraints.map((constraint) => (
-                      <li key={constraint}>{constraint}</li>
-                    ))}
-                  </ul>
-                </div>
-                <CaseBlock label="Solution" value={study.solution} />
+                <CaseBlock label="Action" value={study.solution} />
+                <CaseBlock label="Result" value={study.result} />
                 <div className="case-block wide">
-                  <span>Engineering</span>
+                  <span>Tools / stack</span>
                   <ul>
                     {study.engineering.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
                 </div>
-                <CaseBlock label="AI Workflow" value={study.aiWorkflow} />
-                <CaseBlock label="Result" value={study.result} />
-                <CaseBlock label="Reflection" value={study.reflection} />
               </div>
             </div>
           </motion.article>

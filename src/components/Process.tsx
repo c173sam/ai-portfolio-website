@@ -8,8 +8,8 @@ export function Process() {
     <ModuleSection
       id="process"
       eyebrow="Engineering process"
-      title="Support work becomes a system."
-      description="The operating model is designed for technical support, project coordination, and digital operations work where clarity matters as much as speed."
+      title="How this site was built."
+      description="The process communicates product delivery ability: requirements, information architecture, component design, motion, responsive layout, and deployment."
     >
       <div className="process-board">
         {engineeringProcess.map((step, index) => (

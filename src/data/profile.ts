@@ -1,17 +1,16 @@
 import {
-  BookOpenText,
   BrainCircuit,
   ClipboardCheck,
   Code2,
   FileText,
-  GitBranch,
   LifeBuoy,
+  MessageSquare,
   Network,
-  Radar,
-  ShieldCheck,
-  Waypoints
+  SearchCheck,
+  Waypoints,
+  Wrench
 } from "lucide-react";
-import type { Capability, CaseStudy, Decision, NavigationItem, ProcessStep } from "../types";
+import type { Capability, CaseStudy, NavigationItem, ProcessStep } from "../types";
 
 export const profile = {
   initials: "XN",
@@ -24,18 +23,14 @@ export const profile = {
   github: "https://github.com/c173sam/ai-portfolio-website",
   resumeHref: `${import.meta.env.BASE_URL}resume.docx`,
   summary:
-    "A technical support and project coordination candidate with hands-on IT operations experience in logistics infrastructure, network troubleshooting, endpoint support, security response, documentation, and AI-assisted workflow design.",
+    "I turn fragmented information, technical issues, and unclear processes into structured support workflows, clean documentation, and reliable execution.",
   thesis:
-    "I turn operational ambiguity into structured support workflows, clear documentation, and reliable execution."
+    "I build systems that reduce operational chaos."
 };
 
 export const navigation: NavigationItem[] = [
-  { id: "introduction", label: "Introduction", descriptor: "Positioning" },
-  { id: "capabilities", label: "Capabilities", descriptor: "Evidence" },
-  { id: "case-studies", label: "Case Studies", descriptor: "Thinking" },
-  { id: "process", label: "Process", descriptor: "Execution" },
-  { id: "ai-workflow", label: "AI Workflow", descriptor: "Method" },
-  { id: "decisions", label: "Decisions", descriptor: "Taste" },
+  { id: "work", label: "Work", descriptor: "Selected evidence" },
+  { id: "process", label: "Process", descriptor: "Delivery logic" },
   { id: "resume", label: "Resume", descriptor: "Proof" },
   { id: "contact", label: "Contact", descriptor: "Next step" }
 ];
@@ -43,211 +38,144 @@ export const navigation: NavigationItem[] = [
 export const capabilities: Capability[] = [
   {
     title: "Technical Support",
-    signal: "Server inspection, endpoint support, PDA devices, office network troubleshooting.",
-    evidence: "Supported 30+ device and network incidents in a logistics park environment.",
+    signal: "Keeps business systems usable by turning device, network, and endpoint issues into clear support actions.",
+    evidence: "Creates value through uptime, faster diagnosis, and less operational interruption.",
     icon: LifeBuoy
   },
   {
-    title: "Network Infrastructure",
-    signal: "TCP/IP, VLAN planning, switch configuration, router basics, connectivity analysis.",
-    evidence: "Completed campus LAN topology planning, VLAN design, testing, and documentation.",
-    icon: Network
-  },
-  {
-    title: "Monitoring & Security",
-    signal: "Zabbix, Prometheus, Grafana basics, log analysis, endpoint security handling.",
-    evidence: "Participated in terminal security management, malware risk response, isolation, and remediation.",
-    icon: ShieldCheck
-  },
-  {
     title: "Project Coordination",
-    signal: "Stakeholder coordination, vendor collaboration, issue tracking, project support.",
-    evidence: "Acted as on-site technical interface across IT, business stakeholders, and suppliers.",
+    signal: "Aligns IT, business stakeholders, and suppliers around owners, next steps, and closure.",
+    evidence: "Creates value by reducing ambiguity between technical teams and operational users.",
     icon: ClipboardCheck
   },
   {
     title: "Documentation",
-    signal: "SOP writing, inspection records, fault handling notes, knowledge-base maintenance.",
-    evidence: "Converted operational experience into reusable documents for team efficiency.",
+    signal: "Converts inspections, incidents, and implementation logic into reusable SOPs and support records.",
+    evidence: "Creates value by making repeated problems easier to resolve and transfer.",
     icon: FileText
   },
   {
-    title: "AI-assisted Delivery",
-    signal: "Research, prompt framing, rapid prototyping, human validation, iteration, deployment.",
-    evidence: "Built and published this GitHub Pages portfolio as a structured career artifact.",
+    title: "Troubleshooting",
+    signal: "Breaks down unclear technical issues through observation, connectivity checks, and structured elimination.",
+    evidence: "Creates value through faster response and more reliable incident handling.",
+    icon: Wrench
+  },
+  {
+    title: "Cross-functional Communication",
+    signal: "Translates technical status into language stakeholders can use to make decisions.",
+    evidence: "Creates value by keeping teams aligned during live operational pressure.",
+    icon: MessageSquare
+  },
+  {
+    title: "Workflow Structuring",
+    signal: "Uses AI-assisted research, prompt design, and human review to turn scattered work into repeatable systems.",
+    evidence: "Creates value by improving speed without sacrificing accuracy or ownership.",
     icon: BrainCircuit
   }
 ];
 
-export const skillSignals = [
-  "Windows Server",
-  "Linux Basics",
-  "TCP/IP",
-  "VLAN",
-  "Switch Configuration",
-  "Zabbix",
-  "Prometheus",
-  "Grafana",
-  "Log Analysis",
-  "Endpoint Security",
-  "SOP Writing",
-  "Cross-functional Communication",
-  "Stakeholder Coordination",
-  "Git",
-  "GitHub",
-  "React",
-  "TypeScript",
-  "Tailwind CSS",
-  "Framer Motion",
-  "Prompt Engineering"
-];
-
 export const caseStudies: CaseStudy[] = [
   {
-    title: "Logistics Park IT Operations Support",
-    type: "Internship Experience",
+    title: "Logistics IT Operation Support",
+    type: "Case 01",
     context:
-      "Shanghai Deppon Logistics required stable IT operations across warehouse systems, servers, network devices, PDA terminals, automation equipment, and office networks.",
+      "Deppon Logistics IT operations support.",
     problem:
-      "Business operations depend on fast incident response. Device failures, network instability, or endpoint security issues can interrupt warehouse and logistics workflows.",
-    constraints: [
-      "Support work happened in a live business environment.",
-      "Issues required coordination across IT, business teams, and vendors.",
-      "Documentation needed to be useful for future handling, not just record keeping."
-    ],
+      "Hardware, network, endpoint and process issues often appeared in fragmented operational environments.",
+    constraints: [],
     solution:
-      "Performed daily inspections, monitored operational status, handled on-site troubleshooting, coordinated resources, and documented incident patterns for team reuse.",
+      "Supported troubleshooting, endpoint handling, documentation, and coordination.",
     engineering: [
-      "Inspected servers, network devices, endpoints, PDA terminals, and automation equipment.",
-      "Analyzed office network and equipment failures through on-site observation and connectivity checks.",
-      "Supported malware risk handling through isolation, vulnerability remediation, and security policy improvement."
+      "Windows Server",
+      "Linux Basics",
+      "Endpoint Support",
+      "Network Devices",
+      "Documentation"
     ],
-    aiWorkflow:
-      "AI can strengthen this workflow by generating troubleshooting checklists, incident summaries, SOP drafts, and knowledge-base structures after human validation.",
+    aiWorkflow: "",
     result:
-      "Handled 30+ device and network incidents while supporting stable warehouse and logistics system operation.",
-    reflection:
-      "The strongest support work is quiet: it makes incidents traceable, stakeholders aligned, and repeated problems easier to solve next time."
+      "Improved issue visibility, response structure, and operational reliability.",
+    reflection: ""
   },
   {
-    title: "Campus Network Planning & Implementation",
-    type: "Technical Project",
+    title: "Campus Network Planning",
+    type: "Case 02",
     context:
-      "A campus LAN planning project covering network topology, VLAN segmentation, switch configuration, connectivity testing, and deployment documentation.",
+      "Network planning and technical documentation.",
     problem:
-      "A network plan is only useful if the topology is understandable, segmentation is intentional, and testing records can prove the implementation works.",
-    constraints: [
-      "Topology needed to be readable for non-authors.",
-      "VLAN design had to support practical segmentation.",
-      "Fault simulation and testing had to produce reusable evidence."
-    ],
+      "A campus network required clear topology, device planning, security logic and maintainable documentation.",
+    constraints: [],
     solution:
-      "Designed the network topology, planned VLANs, completed basic switch configuration, tested connectivity, simulated faults, and organized deployment documents.",
-    engineering: [
-      "Used Visio to communicate the topology clearly.",
-      "Configured switching fundamentals and tested network reachability.",
-      "Documented test records and troubleshooting observations."
-    ],
-    aiWorkflow:
-      "AI can review topology assumptions, translate technical steps into clearer documentation, and help structure test records for later reuse.",
+      "Designed network structure, organized technical logic, produced documentation.",
+    engineering: ["TCP/IP", "VLAN", "Switch Configuration", "Visio", "Technical Documentation"],
+    aiWorkflow: "",
     result:
-      "Produced topology diagrams, configuration notes, troubleshooting records, and project documentation.",
-    reflection:
-      "A good infrastructure project is not just configured correctly. It is explainable, testable, and maintainable."
+      "Built a structured technical plan that demonstrated system thinking.",
+    reflection: ""
   },
   {
     title: "Interactive AI Career Experience",
-    type: "Productized Portfolio",
+    type: "Case 03",
     context:
-      "A recruiter-facing digital experience created to present technical support capability, project coordination potential, AI workflow maturity, and GitHub delivery quality.",
+      "Using AI-assisted development to transform resume experience into a deployed interactive website.",
     problem:
-      "A traditional resume can list experience, but it rarely demonstrates information architecture, design judgment, engineering quality, and delivery process.",
-    constraints: [
-      "The content must stay truthful to the resume.",
-      "The visual system must feel like a premium product, not a student template.",
-      "The project must remain maintainable and deployable through GitHub."
-    ],
+      "A normal resume cannot fully show workflow, design sense and engineering implementation.",
+    constraints: [],
     solution:
-      "Built a modular React experience with structured data, reusable components, calm motion, dark product aesthetics, and a deployable GitHub Pages workflow.",
-    engineering: [
-      "Separated profile data, interface modules, hooks, and page composition.",
-      "Used TypeScript, Vite, Tailwind CSS, Framer Motion, and Lucide React.",
-      "Published source code and static build through GitHub."
-    ],
-    aiWorkflow:
-      "AI supported content structuring, design critique, component scaffolding, README drafting, and iterative quality review.",
+      "Used prompt engineering, AI-assisted coding, human review, iteration and GitHub Pages deployment.",
+    engineering: ["React", "TypeScript", "Vite", "Tailwind CSS", "Framer Motion", "GitHub Pages"],
+    aiWorkflow: "",
     result:
-      "Created a public career artifact that demonstrates both resume facts and modern AI-assisted delivery behavior.",
-    reflection:
-      "The portfolio itself is evidence: it shows how raw career material becomes a designed, testable, and shipped product."
+      "Created a live career experience demonstrating AI workflow and frontend execution.",
+    reflection: ""
   }
 ];
 
 export const engineeringProcess: ProcessStep[] = [
-  { label: "Observe", description: "Start from operational context, user pain, and business interruption risk." },
-  { label: "Structure", description: "Turn unclear issues into incident categories, constraints, owners, and next actions." },
-  { label: "Execute", description: "Apply technical checks, coordinate resources, document decisions, and close loops." },
-  { label: "Review", description: "Validate results with human judgment, evidence, and stakeholder feedback." },
-  { label: "Systemize", description: "Convert repeatable work into SOPs, templates, knowledge-base entries, and workflows." }
+  { label: "Requirements", description: "Defined the site as an interactive resume product, not a generic portfolio." },
+  { label: "Information Architecture", description: "Reduced content into work evidence, capability value, workflow, process, and proof." },
+  { label: "Component Design", description: "Separated profile data, sections, and reusable interface patterns for maintainability." },
+  { label: "Motion Design", description: "Used restrained opacity, blur, and translate to guide attention without distraction." },
+  { label: "Responsive Layout", description: "Built a single-column mobile experience and spacious desktop composition." },
+  { label: "Deployment", description: "Published the final static build through GitHub Pages with a reproducible Vite build." }
 ];
 
 export const aiWorkflow: ProcessStep[] = [
-  { label: "Research", description: "Gather role expectations, technical context, and examples before writing or building." },
-  { label: "Planning", description: "Define the target outcome, constraints, audience, and acceptance criteria." },
-  { label: "Prompt Engineering", description: "Frame prompts with context, task boundaries, examples, and review standards." },
-  { label: "Rapid Prototype", description: "Generate a first version quickly, then inspect structure, tone, and feasibility." },
-  { label: "Human Validation", description: "Check every claim against resume facts, technical reality, and recruiter value." },
-  { label: "Iteration", description: "Refine hierarchy, motion, copy, accessibility, and responsiveness." },
-  { label: "Deployment", description: "Ship through GitHub with a clean repository and reproducible build." },
-  { label: "Reflection", description: "Record what improved, what remains uncertain, and what should be upgraded next." }
-];
-
-export const designDecisions: Decision[] = [
-  {
-    principle: "Calm confidence",
-    choice: "Almost-black interface, soft gray typography, one restrained cyan accent.",
-    reason: "The page should feel like serious software, not decorative self-promotion."
-  },
-  {
-    principle: "Evidence over claims",
-    choice: "Case studies explain context, problem, constraints, solution, engineering, result, and reflection.",
-    reason: "Recruiters learn how the candidate thinks, not only what tools are listed."
-  },
-  {
-    principle: "Invisible complexity",
-    choice: "Reusable data-driven components and a small app shell.",
-    reason: "Maintainability is part of the portfolio signal."
-  },
-  {
-    principle: "Motion with purpose",
-    choice: "Subtle opacity, blur, elevation, and active-section transitions.",
-    reason: "Animation guides attention without becoming entertainment."
-  }
+  { label: "Research", description: "Clarify role expectations, resume facts, and recruiter decision signals." },
+  { label: "Prompt Design", description: "Frame the task with constraints, tone, audience, and quality bar." },
+  { label: "Prototype", description: "Use AI to accelerate first-pass structure, copy, and component direction." },
+  { label: "Human Review", description: "Validate facts, remove exaggeration, and check whether the result feels credible." },
+  { label: "Refactor", description: "Improve architecture, hierarchy, responsive behavior, and interaction restraint." },
+  { label: "Deploy", description: "Build, commit, push, and publish through GitHub Pages." }
 ];
 
 export const resumeFacts = [
   {
-    label: "Experience",
+    label: "Internship direction",
+    value: "Technical Support / Project Coordination / Digital Operations / Solution Support"
+  },
+  {
+    label: "Technical support experience",
     value: "IT Operations & Technical Support Intern, Shanghai Deppon Logistics, 2024.01 - 2024.12"
   },
   {
-    label: "Education",
-    value: "Modern Communication Technology, Shandong Vocational College of Light Industry, 2023.09 - 2027.06"
+    label: "Project coordination ability",
+    value: "Stakeholder coordination, supplier communication, issue tracking, documentation, and project support"
   },
   {
-    label: "Courses",
-    value: "Computer Networks, Linux System Administration, Network Security, Database Basics, Communication Principles"
+    label: "AI-assisted development ability",
+    value: "Prompt engineering, AI-assisted coding, human review, iteration, and documentation"
   },
   {
-    label: "Language",
-    value: "Chinese native; English reading for technical documentation and information retrieval"
+    label: "GitHub deployment proof",
+    value: "Live React + TypeScript website deployed through GitHub Pages"
   }
 ];
 
 export const interfaceIcons = {
   code: Code2,
-  radar: Radar,
-  branch: GitBranch,
-  book: BookOpenText,
+  radar: SearchCheck,
+  branch: Network,
+  book: FileText,
   waypoints: Waypoints
 };

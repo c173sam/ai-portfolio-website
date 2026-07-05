@@ -8,8 +8,8 @@ export function ResumeContact() {
       <ModuleSection
         id="resume"
         eyebrow="Resume"
-        title="Verified career facts."
-        description="The website is designed around real resume evidence: no invented metrics, no decorative claims, no fake social proof."
+        title="Concise proof."
+        description="The resume layer stays short: direction, experience, coordination ability, AI-assisted development, and GitHub deployment proof."
       >
         <div className="resume-panel">
           {resumeFacts.map((fact) => (
@@ -27,8 +27,8 @@ export function ResumeContact() {
       <ModuleSection
         id="contact"
         eyebrow="Contact"
-        title="Ready for a structured conversation."
-        description="Best fit: technical support, project coordination, digital operations, solution support, and AI-assisted documentation roles."
+        title="Contact."
+        description="Minimal next-step information for technical support, project coordination, digital operations, and solution support roles."
       >
         <div className="contact-matrix">
           <a href={`mailto:${profile.email}`}>

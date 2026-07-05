@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
-import { capabilities, skillSignals } from "../data/profile";
+import { capabilities } from "../data/profile";
 import { ModuleSection } from "./ModuleSection";
 
 export function Capabilities() {
   return (
     <ModuleSection
       id="capabilities"
-      eyebrow="Capability map"
-      title="Signals, not slogans."
-      description="A recruiter should be able to connect each capability to a concrete operating context, technical behavior, or shipped artifact."
+      eyebrow="Operational capability"
+      title="Capability that creates business value."
+      description="Not a colorful skills list. Each pillar describes how technical support behavior reduces friction for teams and operations."
     >
       <div className="capability-system">
         {capabilities.map((capability, index) => {
@@ -30,12 +30,6 @@ export function Capabilities() {
             </motion.article>
           );
         })}
-      </div>
-
-      <div className="signal-cloud" aria-label="Technical and professional signals">
-        {skillSignals.map((signal) => (
-          <span key={signal}>{signal}</span>
-        ))}
       </div>
     </ModuleSection>
   );

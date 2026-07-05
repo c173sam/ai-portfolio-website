@@ -30,9 +30,3 @@ export type ProcessStep = {
   label: string;
   description: string;
 };
-
-export type Decision = {
-  principle: string;
-  choice: string;
-  reason: string;
-};

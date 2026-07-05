@@ -45,6 +45,16 @@ The interface is built around calm confidence:
 
 The design avoids common portfolio tropes such as skill percentages, progress bars, fake metrics, decorative mockups, stock illustrations, and exaggerated animations.
 
+The current structure is intentionally concise:
+
+- Hero
+- Selected Work
+- Operational Capability
+- AI Workflow
+- Engineering Process
+- Resume Proof
+- Contact
+
 ## Tech Decisions
 
 - React provides composable interface modules.
@@ -58,13 +68,12 @@ The design avoids common portfolio tropes such as skill percentages, progress ba
 
 The site is structured around recruiter decision-making:
 
-- Introduction: positioning and operating thesis
-- Capabilities: signals connected to evidence
-- Case Studies: context, problem, constraints, solution, engineering, AI workflow, result, reflection
-- Engineering Process: how support work becomes repeatable workflow
-- AI Workflow: where AI accelerates work and where human validation remains necessary
-- Design Decisions: why the interface looks and behaves this way
-- Resume: verified career facts
+- Hero: core operating statement and role direction
+- Selected Work: context, problem, action, result, and tools
+- Operational Capability: business value of support-oriented capabilities
+- AI Workflow: AI as a working process, not a gimmick
+- Engineering Process: how the site was built and shipped
+- Resume Proof: concise verified facts
 - Contact: direct next-step information
 
 ## Performance

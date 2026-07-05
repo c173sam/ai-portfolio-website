@@ -9,14 +9,14 @@ export function AIWorkflow() {
     <ModuleSection
       id="ai-workflow"
       eyebrow="AI workflow"
-      title="AI is a method, not a costume."
-      description="The workflow shows where AI accelerates thinking, and where human validation protects accuracy, taste, and accountability."
+      title="AI is part of the working process."
+      description="Research, prompt design, prototype, human review, refactor, deploy. The value is not AI decoration. It is faster structured thinking with human accountability."
       dense
     >
       <div className="workflow-console">
         <div className="workflow-header">
           <Icon size={18} />
-          <span>research → planning → validation → deployment</span>
+          <span>research → prompt design → prototype → review → refactor → deploy</span>
         </div>
         <div className="workflow-rail">
           {aiWorkflow.map((step, index) => (
