@@ -5,9 +5,9 @@
 @tailwind utilities;
 
 :root {
-  --bg: 0.075 0 0;
-  --surface: 0.118 0 0;
-  --surface-2: 0.155 0 0;
+  --bg: 0.092 0.004 230;
+  --surface: 0.132 0.005 230;
+  --surface-2: 0.17 0.006 230;
   --ink: 0.965 0 0;
   --body: 0.735 0 0;
   --muted: 0.52 0 0;
@@ -63,7 +63,9 @@ p {
   position: relative;
   min-height: 100vh;
   overflow-x: clip;
-  background: oklch(var(--bg));
+  background:
+    radial-gradient(circle at 50% -10%, oklch(var(--accent) / 0.075), transparent 34rem),
+    linear-gradient(180deg, oklch(0.11 0.006 230), oklch(var(--bg)) 34rem);
 }
 
 .ambient-stage,
@@ -84,24 +86,25 @@ p {
 
 .ambient-orbit {
   background:
-    radial-gradient(circle at 42% 16%, oklch(var(--accent) / 0.07), transparent 34rem),
-    radial-gradient(circle at 78% 46%, oklch(0.8 0.02 220 / 0.035), transparent 28rem);
-  animation: ambient-drift 36s cubic-bezier(0.16, 1, 0.3, 1) infinite alternate;
+    radial-gradient(circle at 24% 18%, oklch(var(--accent) / 0.12), transparent 30rem),
+    radial-gradient(circle at 82% 36%, oklch(0.72 0.035 255 / 0.09), transparent 32rem),
+    radial-gradient(circle at 50% 92%, oklch(0.62 0.035 190 / 0.06), transparent 38rem);
+  animation: ambient-drift 30s cubic-bezier(0.16, 1, 0.3, 1) infinite alternate;
   transform: translate3d(0, 0, 0);
 }
 
 .ambient-grid {
   opacity: 1;
   background:
-    linear-gradient(oklch(1 0 0 / 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(1 0 0 / 0.03) 1px, transparent 1px);
+    linear-gradient(oklch(1 0 0 / 0.052) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(1 0 0 / 0.052) 1px, transparent 1px);
   background-size: 80px 80px;
-  mask-image: linear-gradient(to bottom, black 0%, black 38%, transparent 76%);
-  animation: grid-drift 42s linear infinite;
+  mask-image: linear-gradient(to bottom, black 0%, black 54%, transparent 88%);
+  animation: grid-drift 36s linear infinite;
 }
 
 .ambient-noise {
-  opacity: 0.035;
+  opacity: 0.06;
   background-image:
     radial-gradient(circle at 12% 18%, white 0 0.5px, transparent 0.8px),
     radial-gradient(circle at 72% 62%, white 0 0.45px, transparent 0.75px);
@@ -110,25 +113,25 @@ p {
 }
 
 .ambient-scan {
-  opacity: 0.08;
-  background: linear-gradient(to bottom, transparent 0%, transparent 48%, oklch(var(--accent) / 0.16) 50%, transparent 52%, transparent 100%);
+  opacity: 0.12;
+  background: linear-gradient(to bottom, transparent 0%, transparent 48%, oklch(var(--accent) / 0.22) 50%, transparent 52%, transparent 100%);
   background-size: 100% 220%;
   animation: scan-line 28s linear infinite;
 }
 
 .cursor-spotlight {
-  opacity: 0.58;
+  opacity: 0.78;
   mix-blend-mode: screen;
   transform: translate3d(0, 0, 0);
 }
 
 @keyframes ambient-drift {
   from {
-    transform: translate3d(-2%, -1%, 0) scale(1);
+    transform: translate3d(-2.5%, -1%, 0) scale(1);
   }
 
   to {
-    transform: translate3d(2%, 1.5%, 0) scale(1.04);
+    transform: translate3d(2.5%, 1.8%, 0) scale(1.06);
   }
 }
 
