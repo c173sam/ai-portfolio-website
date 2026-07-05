@@ -1,92 +1,123 @@
-# Xu Nianqi AI-assisted Portfolio Website
+# Xu Nianqi Career Experience
 
-A polished React + TypeScript + Vite + Tailwind CSS portfolio website designed for internship applications, resume links, and GitHub presentation. The site positions Xu Nianqi as a Technical Support / Project Coordination Intern candidate with IT operations experience, AI-assisted workflow awareness, documentation habits, and professional communication ability.
+An interactive career experience for Xu Nianqi, built as a premium software-product surface rather than a conventional student portfolio. The site presents technical support experience, project coordination potential, AI-assisted workflow capability, and GitHub delivery quality through structured evidence and calm interaction design.
 
-## Project Overview
+Live site: https://c173sam.github.io/ai-portfolio-website/
 
-This portfolio is built with an AI product website aesthetic inspired by modern global software brands. It uses a dark technical interface, structured content sections, animated workflow visuals, glass-style panels, and recruiter-friendly English copy.
+## Architecture
 
-The current content is based on the resume of Xu Nianqi, including IT operations and technical support internship experience at Deppon Logistics, a campus network planning project, technical support skills, network fundamentals, monitoring awareness, documentation experience, and project support positioning.
+The project separates content, interface modules, and interaction logic so the experience can evolve without turning into a single-page code dump.
 
-## Features
-
-- Responsive single-page portfolio layout
-- Hero section with resume-backed professional positioning and CTA buttons
-- Animated AI Command Panel showing an AI-assisted delivery workflow
-- About, AI Capability, Skills, Projects, Workflow, Resume Highlights, and Contact sections
-- Project cards based on logistics IT support, campus network planning, and this personal AI portfolio
-- Scroll reveal animation powered by Framer Motion
-- Lucide React icons for a clean product UI feel
-- Tailwind CSS with OKLCH-based design tokens
-- GitHub and Vercel ready project structure
-
-## Tech Stack
-
-- React
-- TypeScript
-- Vite
-- Tailwind CSS
-- Framer Motion
-- Lucide React
-
-## AI Workflow
-
-The website is designed to demonstrate a practical AI-assisted development workflow:
-
-1. Research target roles, company expectations, and portfolio signals.
-2. Design prompts with clear constraints, output requirements, and quality criteria.
-3. Generate initial components, copy, and layout ideas with AI assistance.
-4. Review all output manually for accuracy, design quality, accessibility, and maintainability.
-5. Optimize responsive behavior, interaction details, and project documentation.
-6. Deploy the final project through GitHub and Vercel.
-
-## Getting Started
-
-```bash
-npm install
-npm run dev
+```txt
+src/
+  components/
+    AIWorkflow.tsx
+    Capabilities.tsx
+    CaseStudies.tsx
+    DesignDecisions.tsx
+    ExperienceShell.tsx
+    Introduction.tsx
+    ModuleSection.tsx
+    Process.tsx
+    ResumeContact.tsx
+  data/
+    profile.ts
+  hooks/
+    useActiveSection.ts
+  types.ts
+  App.tsx
+  index.css
 ```
 
-Open the local URL printed by Vite, usually:
+`profile.ts` is the single source of truth for career content. `App.tsx` only composes the experience. Components are designed as product modules, not template sections.
 
-```bash
-http://localhost:5173
-```
+## Design Philosophy
+
+The interface is built around calm confidence:
+
+- Almost-black background
+- Soft gray typography
+- One restrained cyan accent
+- Large breathing space
+- Product-like navigation
+- Evidence-first case studies
+- Motion that guides attention without performing for attention
+
+The design avoids common portfolio tropes such as skill percentages, progress bars, fake metrics, decorative mockups, stock illustrations, and exaggerated animations.
+
+## Tech Decisions
+
+- React provides composable interface modules.
+- TypeScript keeps content and component contracts explicit.
+- Vite keeps the development and build pipeline fast.
+- Tailwind CSS handles the utility layer while `index.css` defines the product-specific visual system.
+- Framer Motion adds subtle reveal, elevation, and active-surface motion.
+- Lucide React provides clean interface icons without custom illustration noise.
+
+## Content Model
+
+The site is structured around recruiter decision-making:
+
+- Introduction: positioning and operating thesis
+- Capabilities: signals connected to evidence
+- Case Studies: context, problem, constraints, solution, engineering, AI workflow, result, reflection
+- Engineering Process: how support work becomes repeatable workflow
+- AI Workflow: where AI accelerates work and where human validation remains necessary
+- Design Decisions: why the interface looks and behaves this way
+- Resume: verified career facts
+- Contact: direct next-step information
+
+## Performance
+
+- Static Vite build
+- Minimal runtime state
+- Data-driven rendering
+- No heavy visual assets
+- No particle systems or decorative animation loops
+- CSS-based surfaces and responsive layouts
+
+## Accessibility
+
+- Semantic section structure
+- Keyboard-friendly anchor navigation
+- Sufficient contrast on dark surfaces
+- Reduced-motion media query
+- Descriptive link labels
+- Responsive layout across desktop and mobile
 
 ## Deployment
 
-### Deploy to Vercel
-
-1. Push this project to a GitHub repository.
-2. Log in to Vercel.
-3. Click `Add New Project`.
-4. Import the GitHub repository.
-5. Keep the default Vite settings.
-6. Click `Deploy`.
-
-### Build Locally
+The project is deployed through GitHub Pages.
 
 ```bash
+npm install
 npm run build
 ```
 
-The production output will be generated in the `dist` folder.
+Main source branch:
 
-## GitHub Skills Demonstrated
+```txt
+main
+```
 
-- Repository setup
-- Commit convention awareness
-- README writing
-- Branch-based development
-- Pull request workflow readiness
-- Issue tracking readiness
-- GitHub Pages or Vercel deployment readiness
-- Basic CI/CD awareness through GitHub Actions concepts
+Static deployment branch:
 
-## Suggested Customization Checklist
+```txt
+gh-pages
+```
 
-- Add the real GitHub profile URL after creating or polishing the GitHub account.
-- Add LinkedIn if a profile is created later.
-- Update project cards with real repository and demo links when available.
-- Add screenshots or project case studies when available.
-- Create a clean commit history before sharing the repository.
+## Engineering Challenges
+
+- Turning resume content into a product-like narrative without inventing facts
+- Avoiding generic portfolio structure while keeping recruiter scanning efficient
+- Balancing visual polish with fast static deployment
+- Making AI workflow visible as a method rather than a superficial tools list
+- Keeping the interface modular enough for future case-study expansion
+
+## Future Improvements
+
+- Add a custom domain
+- Add real LinkedIn once available
+- Add expanded screenshots or technical appendices for each case study
+- Add a lightweight analytics-free interaction log for self-review
+- Add English and Chinese language mode if targeting both local and global recruiters
